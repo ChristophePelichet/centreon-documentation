@@ -9,7 +9,7 @@ Pure Storage develops flash-based storage for data centers using consumer-grade 
 It provides proprietary de-duplication and compression software to improve the amount of data that can be stored on each drive. 
 It also develops its own flash storage hardware.
 
-## Plugin-pack assets
+## Plugin-Pack assets
 
 ### Monitored objects
 
@@ -17,7 +17,7 @@ It also develops its own flash storage hardware.
 
 ## Monitored metrics                                                                                                   
 
-More information into Pure Storage official API documentation : https://blog.purestorage.com/introducing-the-pure1-rest-api/
+More information is available in the Pure Storage official API documentation : https://blog.purestorage.com/introducing-the-pure1-rest-api/
 
 <!--DOCUSAURUS_CODE_TABS-->
 <!--Alarms-Global-->
@@ -36,7 +36,7 @@ More information into Pure Storage official API documentation : https://blog.pur
 
 | Metric name        | Description                                              |
 | :----------------- | :------------------------------------------------------- |
-| Volume-Usage       | The usage of volume. Unit: Bytes or %                    |
+| Volume-Usage       | The usage of volume. Units: Bytes or %                   |
 | Data-Reduction     | The data-reduction ratio on the volume. Unit: ratio      |
 | Total-Reduction    | The total-reduction on the volume. Unit: count           |
 
@@ -46,9 +46,7 @@ More information into Pure Storage official API documentation : https://blog.pur
 
 * This Monitoring Plugin requires at least a Pure Storage API version >= 1.11 (https://static.pure1.purestorage.com/api-swagger/index.html).
 
-#### Create specific user
-
-You have to configure the user who can connect to storage array. This user must have at least "read only" access to the storage array.
+* A service account has to be created on the device. This account must have at least a "read only" access to the storage array.
  
 ## Installation
 
@@ -62,7 +60,7 @@ You have to configure the user who can connect to storage array. This user must 
 yum install centreon-plugin-Hardware-Storage-Purestorage-Restapi
 ```
 
-2. Install the "Pure-Storage-Restapi" Centreon Plugin Pack from the "Configuration > Plugin packs > Manager" page
+2. Install the "Pure-Storage-Restapi" Centreon Plugin-Pack from the "Configuration > Plugin packs > Manager" page
 
 
 <!--Offline IMP License-->
@@ -73,13 +71,13 @@ yum install centreon-plugin-Hardware-Storage-Purestorage-Restapi
 yum install centreon-plugin-Hardware-Storage-Purestorage-Restapi
 ```
 
-2. Install the Centreon Plugin Pack RPM on your central server:
+2. Install the Centreon Plugin-Pack RPM on your central server:
 
 ```bash
 yum install centreon-pack-hardware-storage-purestorage-restapi
 ```
 
-3. Install the "Pure-Storage-Restapi" Centreon Plugin Pack from the "Configuration > Plugin packs > Manager" page
+3. Install the "Pure-Storage-Restapi" Centreon Plugin-Pack from the "Configuration > Plugin packs > Manager" page
 
 <!--END_DOCUSAURUS_CODE_TABS-->
 
@@ -96,9 +94,9 @@ Apply the "HW-Storage-Purestorage-Restapi-custom" template to your newly created
 
 ## FAQ
 
-#### How can I test my plugin through the CLI and what does the main command_line parameters mean ?
+#### How can I test the Plugin and what are the main options for ?
 
-Once you've installed your monitoring plugin, you can use the centreon-engine user to test it:
+Once the Centreon Plugin installed, you can test it directly on the Centreon poller by logging into the CLI with the *centreon-engine* user and run the command hereafter:
 
 ```bash
 /usr/lib/centreon/plugins//centreon_purestorage_restapi.pl
@@ -121,4 +119,4 @@ Once you've installed your monitoring plugin, you can use the centreon-engine us
 OK: Volume 'PROD::CENTREON' Usage Total: 6.00 TB Used: 1.13 TB (18.85%) Free: 4.87 TB (81.15%), Data Reduction : 2.917, Total Reduction : 5.193, Snapshots : 0.00 B
 ```
 
-This command checks your storage array Pure Storage volume usage (```--mode=volume-usage```) using api url (```--api-path='/api/1.11'```). It offers detailed space usage as well as storage optimization ratios.
+This command checks the volumes usage (```--mode=volume-usage```) of a Pure Storage array device using the 1.11 API endpoint (```--api-path='/api/1.11'```). The device's IP address is *192.168.1.1* (```--hostname=192.168.1.1```) and the credentials used to authenticate against the API endpoint are *centreon/centreon* (```--username='centreon' --password='centreon'```). The above command would return all of the device's volumes as the name filter will match any result (```--filter-name='.*'```).
