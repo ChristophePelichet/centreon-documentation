@@ -1,6 +1,6 @@
 ---
 id: hardware-storage-purestorage-restapi
-title: Pure Storage
+title: Pure Storage RestAPI 
 ---
 
 ## Overview
